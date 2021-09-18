@@ -1,3 +1,4 @@
+
 Const key word
 
 Const is a promise, which can be bypassed
@@ -16,6 +17,11 @@ const with functions
 string getName() const{} // only inside class. A read only method, which can't modify class variables
 const int * const getAge ()const //this seems not to have much use, because output will be assigned to a variable and after that variable pointer 
                                  //will be used to modify values
+
+
+
+const_member_function.cpp
+    should use mutable key word if a member variable needs to be edited by a const function
 
 
 
