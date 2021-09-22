@@ -18,7 +18,7 @@ class Animal
         {
             cout << "Destroying Animal " << endl;
         }
-        virtual void makeSound()
+        virtual void makeSound()    //since this function is not overridden in chiled class this will be called
         {
             cout << sound << endl;
         }
