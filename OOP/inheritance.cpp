@@ -18,9 +18,9 @@ class Animal
         {
             cout << "Destroying Animal " << endl;
         }
-        virtual void makeSound()    //since this function is not overridden in chiled class this will be called
+        virtual void makeSound()    //If this function is not overridden in chiled class, Base class func will be called
         {
-            cout << sound << endl;
+            cout << "making sound in Animal " << sound << endl;
         }
 };
 
@@ -37,6 +37,13 @@ class Bird: public Animal
     {
         cout << "destroying bird" << endl;
     }
+
+    virtual void makeSound()    //If this function is not overridden in chiled class, Base class func will be called
+    {
+        cout << "making sound in Bird " << sound << endl;
+        Animal::makeSound();
+    }
+
 
 };
 
