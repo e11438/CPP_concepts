@@ -58,5 +58,8 @@ int main()
     Bird b;
     b.makeSound();
     b.printName();
+    Animal a = b;
+    cout << "size of Animal " <<sizeof(Animal) << endl;
+    cout << "size of Bird " <<sizeof(Bird) << endl;
     return 0;
 }
