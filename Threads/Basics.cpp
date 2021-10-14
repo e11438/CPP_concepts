@@ -31,10 +31,13 @@ void getOddSum(newU start, newU end)
     }
 }
 
-void countToIntMax()
+void countToIntMax(int threadId)
 {
-    for(int i = 0; i < 100000; ++i)
+    for(int i = 0; i < 1000; ++i)
+    {
+        cout << "Count in thread " << threadId << " " << i << endl; 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 }
 
 //Compile with g++ Basics.cpp -std=c++11 -pthread
@@ -57,11 +60,13 @@ int main()
     auto startTime = std::chrono::high_resolution_clock::now();
     //countToIntMax();      // vaverage time to run both 218650 ms with 2 threads 109057
     //countToIntMax();
-    std::thread t3(countToIntMax);
-    std::thread t4(countToIntMax);
-    t3.join();
-    t4.join();
-
+    std::thread t3(countToIntMax, 1);
+    std::thread t4(countToIntMax, 2);
+    if(t3.joinable())   t3.join();
+    if(t4.joinable())   t4.join();
+    if(t3.joinable())   t3.join();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    
     auto endTime = std::chrono::high_resolution_clock::now();
     
     cout << "evenSum " << evenSum << endl;
@@ -69,7 +74,7 @@ int main()
     
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime);
-    cout << "time " << duration.count()/1000 << endl;
+    cout << "time in milli seconds " << duration.count()/1000 << endl;
 
     return 0;
 }
