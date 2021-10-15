@@ -17,7 +17,7 @@ public:
     int getBDate() const 
     {
         if(bDate < 1)
-            bDate = 1;
+            bDate = 1;  //since this is a const member function we can't update value of bDate unless it is a mutable variable
         return bDate;
     }
 };
